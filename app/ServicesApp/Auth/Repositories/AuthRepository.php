@@ -23,9 +23,7 @@ class AuthRepository
         $user = User::where('email', $request->email)->first();
 
         if (!$user || !Hash::check($request->password, $user->password)) {
-            return response([
-                'message' => 'Invalid credentials'
-            ], 401);
+            return false;
         }
 
         return $user;

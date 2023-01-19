@@ -8,17 +8,22 @@ use App\ServicesApp\Auth\Requests\RegisterRequest;
 use App\ServicesApp\Auth\Requests\LoginRequest;
 use App\ServicesApp\Auth\Facades\AuthServices;
 use Illuminate\Http\Request;
+use Response;
 
 class AuthControllers extends BaseController
 {
     public function register(RegisterRequest $request)
     {
-        return ResponseHelper::success(AuthServices::register($request->validate()), 'Register Success');
+        return ResponseHelper::success(AuthServices::register($request), 'Register Success');
     }
 
     public function login(LoginRequest $request)
     {
         $data = AuthServices::login($request);
+
+        if (!$data){
+            return ResponseHelper::error([], 'Email or Your Password is wrong!');
+        }
 
         return ResponseHelper::success($data, 'Login Success');
     }

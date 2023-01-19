@@ -27,6 +27,9 @@ class AuthServices implements AuthInterfaces
     public function login($request)
     {
         $data['user'] = $this->AuthRepository->login($request);
+        if (!$data['user']){
+            return false;
+        }
         $data['token'] = $this->createToken($data['user']);
 
         return $data;
