@@ -58,10 +58,10 @@ class RouteServiceProvider extends ServiceProvider
      * Define the "api" routes for the application.
      */
     protected function mapApiRoutes(){
-        // Map all routes in app/ServicesApp/{ServiceName}/routes/api.php
-        $path = base_path('app/ServicesApp');
+        // Map all routes in app/ServiceApps/{ServiceName}/routes/api.php
+        $path = base_path('app/ServiceApps');
 
-        // Get all directories in app/ServicesApp
+        // Get all directories in app/ServiceApps
         $directories = array_filter(glob($path . '/*'), 'is_dir');
 
         // Loop through all directories
@@ -70,7 +70,7 @@ class RouteServiceProvider extends ServiceProvider
             $directory = str_replace($path . '/', '', $directory);
 
             // Get the route path
-            $routePath = base_path('app/ServicesApp/' . $directory . '/routes/api.php');
+            $routePath = base_path('app/ServiceApps/' . $directory . '/routes/api.php');
 
             // Check if the route path exists
             if (file_exists($routePath)) {
