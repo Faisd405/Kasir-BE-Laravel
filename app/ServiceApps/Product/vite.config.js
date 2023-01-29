@@ -1,18 +1,18 @@
 const dotenvExpand = require('dotenv-expand');
-dotenvExpand(require('dotenv').config({ path: '../../.env'/*, debug: true*/}));
+dotenvExpand(require('dotenv').config({ path: '../../../.env'/*, debug: true*/}));
 
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 
 export default defineConfig({
     build: {
-        outDir: '../../public/build-product',
+        outDir: '../../../public/build-product',
         emptyOutDir: true,
         manifest: true,
     },
     plugins: [
         laravel({
-            publicDirectory: '../../public',
+            publicDirectory: '../../../public',
             buildDirectory: 'build-product',
             input: [
                 __dirname + '/Resources/assets/sass/app.scss',

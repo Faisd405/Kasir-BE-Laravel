@@ -2,7 +2,7 @@
 
 namespace App\ServiceApps\Auth\Repositories;
 
-use App\ServiceApps\Auth\Models\User;
+use App\ServiceApps\Auth\Entities\User;
 use Illuminate\Support\Facades\Hash;
 
 class AuthRepository

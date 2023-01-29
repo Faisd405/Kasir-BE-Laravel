@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\ServiceApps\Auth\Controllers\AuthControllers;
+use App\ServiceApps\Auth\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +17,9 @@ use App\ServiceApps\Auth\Controllers\AuthControllers;
 */
 
 // Auth
-Route::group([], function () {
-    Route::post('register', [AuthControllers::class, 'register']);
-    Route::post('login', [AuthControllers::class, 'login']);
-    Route::middleware('auth:sanctum')->post('logout', [AuthControllers::class, 'logout']);
-    Route::middleware('auth:sanctum')->post('refresh-token', [AuthControllers::class, 'refreshToken']);
+Route::group(['prefix' => 'auth'], function () {
+    Route::post('register', [AuthController::class, 'register']);
+    Route::post('login', [AuthController::class, 'login']);
+    Route::middleware('auth:sanctum')->post('logout', [AuthController::class, 'logout']);
+    Route::middleware('auth:sanctum')->post('refresh-token', [AuthController::class, 'refreshToken']);
 });
