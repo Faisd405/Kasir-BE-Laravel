@@ -3,10 +3,10 @@
 namespace App\ServiceApps\Auth\Http\Controllers;
 
 use App\BaseService\BaseController;
-use App\Utils\ResponseHelper;
-use App\ServiceApps\Auth\Http\Requests\RegisterRequest;
-use App\ServiceApps\Auth\Http\Requests\LoginRequest;
 use App\ServiceApps\Auth\Facades\AuthServices;
+use App\ServiceApps\Auth\Http\Requests\LoginRequest;
+use App\ServiceApps\Auth\Http\Requests\RegisterRequest;
+use App\Utils\ResponseHelper;
 use Illuminate\Http\Request;
 
 class AuthController extends BaseController
@@ -20,7 +20,7 @@ class AuthController extends BaseController
     {
         $data = AuthServices::login($request);
 
-        if (!$data){
+        if (! $data) {
             return ResponseHelper::error([], 'Email or Your Password is wrong!');
         }
 

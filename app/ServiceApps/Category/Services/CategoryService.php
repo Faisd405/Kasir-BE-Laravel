@@ -31,6 +31,7 @@ class CategoryService
     public function update($id, $data)
     {
         $this->categoryRepository->update($id, $data);
+
         return $this->categoryRepository->find($id);
     }
 

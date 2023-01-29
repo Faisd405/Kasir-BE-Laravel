@@ -3,8 +3,6 @@
 namespace App\ServiceApps\Auth\Http\Requests;
 
 use App\BaseService\BaseRequest;
-use Illuminate\Validation\ValidationException;
-use App\Utils\ResponseHelper;
 
 class LoginRequest extends BaseRequest
 {

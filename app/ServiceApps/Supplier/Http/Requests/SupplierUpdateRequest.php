@@ -3,8 +3,6 @@
 namespace App\ServiceApps\Supplier\Http\Requests;
 
 use App\BaseService\BaseRequest;
-use Illuminate\Validation\ValidationException;
-use App\Utils\ResponseHelper;
 
 class SupplierUpdateRequest extends BaseRequest
 {

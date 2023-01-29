@@ -4,15 +4,12 @@ namespace App\ServiceApps\Category\Http\Controllers;
 
 use App\BaseService\BaseController;
 use App\ServiceApps\Category\Facades\CategoryService;
-
 use App\ServiceApps\Category\Http\Requests\CategoryIndexRequest;
 use App\ServiceApps\Category\Http\Requests\CategoryStoreRequest;
 use App\ServiceApps\Category\Http\Requests\CategoryUpdateRequest;
-
 use App\ServiceApps\Category\Http\Resource\CategoryCollection;
 use App\ServiceApps\Category\Http\Resource\CategoryResource;
 use App\Utils\ResponseHelper;
-use GrahamCampbell\ResultType\Success;
 use Illuminate\Http\Request;
 
 class CategoryController extends BaseController
@@ -20,6 +17,7 @@ class CategoryController extends BaseController
     public function index(CategoryIndexRequest $request)
     {
         $data = CategoryService::getAll($request->all());
+
         return ResponseHelper::success(new CategoryCollection($data), 'List Data Categories');
     }
 
@@ -27,7 +25,7 @@ class CategoryController extends BaseController
     {
         $data = CategoryService::find($id, $request->all());
 
-        if (!$data) {
+        if (! $data) {
             return ResponseHelper::notFound('Data Not Found');
         }
 
@@ -43,7 +41,7 @@ class CategoryController extends BaseController
     {
         $data = CategoryService::update($id, $request->all());
 
-        if (!$data) {
+        if (! $data) {
             return ResponseHelper::notFound('Data Not Found');
         }
 
@@ -59,7 +57,7 @@ class CategoryController extends BaseController
     {
         $data = CategoryService::restore($id);
 
-        if (!$data) {
+        if (! $data) {
             return ResponseHelper::notFound('Data Not Found');
         }
 
@@ -70,7 +68,7 @@ class CategoryController extends BaseController
     {
         $data = CategoryService::forceDelete($id);
 
-        if (!$data) {
+        if (! $data) {
             return ResponseHelper::notFound('Data Not Found');
         }
 

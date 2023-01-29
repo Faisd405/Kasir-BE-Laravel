@@ -2,9 +2,9 @@
 
 namespace App\BaseService;
 
+use App\Utils\ResponseHelper;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\ValidationException;
-use App\Utils\ResponseHelper;
 
 class BaseRequest extends FormRequest
 {

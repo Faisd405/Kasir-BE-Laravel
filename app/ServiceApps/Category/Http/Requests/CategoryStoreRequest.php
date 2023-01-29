@@ -3,8 +3,6 @@
 namespace App\ServiceApps\Category\Http\Requests;
 
 use App\BaseService\BaseRequest;
-use Illuminate\Validation\ValidationException;
-use App\Utils\ResponseHelper;
 
 class CategoryStoreRequest extends BaseRequest
 {

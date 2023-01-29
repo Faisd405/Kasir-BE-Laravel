@@ -7,8 +7,8 @@ use App\ServiceApps\Supplier\Entities\Supplier;
 class SupplierRepository
 {
     /**
-     * @param array $params
-     * @param bool $withPaginate
+     * @param  array  $params
+     * @param  bool  $withPaginate
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      */
     public function getAll($params = [], $withPaginate = true)
@@ -18,15 +18,15 @@ class SupplierRepository
         $model->orderBy($params['sort'] ?? 'id', $params['order'] ?? 'desc');
 
         if (isset($params['name'])) {
-            $model->where('name', 'like', '%' . $params['name'] . '%');
+            $model->where('name', 'like', '%'.$params['name'].'%');
         }
 
         if (isset($params['description'])) {
-            $model->where('description', 'like', '%' . $params['description'] . '%');
+            $model->where('description', 'like', '%'.$params['description'].'%');
         }
 
         if (isset($params['search'])) {
-            $model->where('name', 'like', '%' . $params['search'] . '%');
+            $model->where('name', 'like', '%'.$params['search'].'%');
         }
 
         if (isset($params['withTrashed'])) {
@@ -37,10 +37,11 @@ class SupplierRepository
             $model->with($params['with']);
         }
 
-        if ($withPaginate)
+        if ($withPaginate) {
             return $model->paginate($params['limit'] ?? 15);
-        else
+        } else {
             return $model->get();
+        }
     }
 
     public function find($id, $params = [])
@@ -71,7 +72,7 @@ class SupplierRepository
             return null;
         }
 
-        return $model->update($data);;
+        return $model->update($data);
     }
 
     public function delete($id)

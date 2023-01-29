@@ -22,7 +22,7 @@ class AuthRepository
     {
         $user = User::where('email', $request->email)->first();
 
-        if (!$user || !Hash::check($request->password, $user->password)) {
+        if (! $user || ! Hash::check($request->password, $user->password)) {
             return false;
         }
 
@@ -34,7 +34,7 @@ class AuthRepository
         $request->user()->currentAccessToken()->delete();
 
         return response()->json([
-            'message' => 'Logout Success'
+            'message' => 'Logout Success',
         ]);
     }
 }

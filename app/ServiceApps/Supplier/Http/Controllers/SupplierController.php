@@ -4,15 +4,12 @@ namespace App\ServiceApps\Supplier\Http\Controllers;
 
 use App\BaseService\BaseController;
 use App\ServiceApps\Supplier\Facades\SupplierService;
-
 use App\ServiceApps\Supplier\Http\Requests\SupplierIndexRequest;
 use App\ServiceApps\Supplier\Http\Requests\SupplierStoreRequest;
 use App\ServiceApps\Supplier\Http\Requests\SupplierUpdateRequest;
-
 use App\ServiceApps\Supplier\Http\Resource\SupplierCollection;
 use App\ServiceApps\Supplier\Http\Resource\SupplierResource;
 use App\Utils\ResponseHelper;
-use GrahamCampbell\ResultType\Success;
 use Illuminate\Http\Request;
 
 class SupplierController extends BaseController
@@ -20,6 +17,7 @@ class SupplierController extends BaseController
     public function index(SupplierIndexRequest $request)
     {
         $data = SupplierService::getAll($request->all());
+
         return ResponseHelper::success(new SupplierCollection($data), 'List Data Categories');
     }
 
@@ -27,7 +25,7 @@ class SupplierController extends BaseController
     {
         $data = SupplierService::find($id, $request->all());
 
-        if (!$data) {
+        if (! $data) {
             return ResponseHelper::notFound('Data Not Found');
         }
 
@@ -43,7 +41,7 @@ class SupplierController extends BaseController
     {
         $data = SupplierService::update($id, $request->all());
 
-        if (!$data) {
+        if (! $data) {
             return ResponseHelper::notFound('Data Not Found');
         }
 
@@ -59,7 +57,7 @@ class SupplierController extends BaseController
     {
         $data = SupplierService::restore($id);
 
-        if (!$data) {
+        if (! $data) {
             return ResponseHelper::notFound('Data Not Found');
         }
 
@@ -70,7 +68,7 @@ class SupplierController extends BaseController
     {
         $data = SupplierService::forceDelete($id);
 
-        if (!$data) {
+        if (! $data) {
             return ResponseHelper::notFound('Data Not Found');
         }
 

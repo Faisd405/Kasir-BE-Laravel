@@ -5,7 +5,6 @@ namespace App\ServiceApps\Auth\Services;
 use App\ServiceApps\Auth\Contracts\AuthInterfaces;
 use App\ServiceApps\Auth\Repositories\AuthRepository;
 use Illuminate\Support\Facades\Auth;
-use Laravel\Sanctum\PersonalAccessToken;
 
 class AuthServices implements AuthInterfaces
 {
@@ -27,7 +26,7 @@ class AuthServices implements AuthInterfaces
     public function login($request)
     {
         $data['user'] = $this->AuthRepository->login($request);
-        if (!$data['user']){
+        if (! $data['user']) {
             return false;
         }
         $data['token'] = $this->createToken($data['user']);
@@ -40,7 +39,7 @@ class AuthServices implements AuthInterfaces
         $request->user()->currentAccessToken()->delete();
 
         return response()->json([
-            'message' => 'Logout Success'
+            'message' => 'Logout Success',
         ]);
     }
 

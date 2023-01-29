@@ -32,6 +32,7 @@ class SupplierService implements SupplierServiceInterface
     public function update($id, $data)
     {
         $this->supplierRepository->update($id, $data);
+
         return $this->supplierRepository->find($id);
     }
 

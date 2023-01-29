@@ -2,12 +2,12 @@
 
 namespace App\Utils;
 
-use Illuminate\Http\Response as HttpResponse;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response as HttpResponse;
 
 /**
  * Class ResponseHelper
- * @package App\Utils
+ *
  * @method static JsonResponse success($data, $message = null, $statusCode = 200)
  * @method static JsonResponse error($data, $message = null, $statusCode = 400)
  * @method static JsonResponse notFound($message = null, $statusCode = 404)
@@ -18,24 +18,24 @@ use Illuminate\Http\JsonResponse;
 class ResponseHelper extends HttpResponse
 {
     /**
-     * @param bool $success
-     * @param string|null $message
-     * @param int $statusCode
-     * @param array $data
+     * @param  bool  $success
+     * @param  string|null  $message
+     * @param  int  $statusCode
+     * @param  array  $data
      */
-    protected static function responseJson($success, $message = null, $statusCode, $data = [])
+    protected static function responseJson($success, $message, $statusCode, $data = [])
     {
         return response()->json([
-            "success" => $success,
-            "message" => $message,
-            "data" => $data,
+            'success' => $success,
+            'message' => $message,
+            'data' => $data,
         ], $statusCode);
     }
 
     /**
-     * @param array $data
-     * @param string|null $message
-     * @param int $statusCode
+     * @param  array  $data
+     * @param  string|null  $message
+     * @param  int  $statusCode
      */
     public static function success($data, $message = null, $statusCode = 200)
     {
@@ -43,9 +43,9 @@ class ResponseHelper extends HttpResponse
     }
 
     /**
-     * @param array $data
-     * @param string|null $message
-     * @param int $statusCode
+     * @param  array  $data
+     * @param  string|null  $message
+     * @param  int  $statusCode
      */
     public static function created($data = [], $message = null, $statusCode = 201)
     {
@@ -53,9 +53,9 @@ class ResponseHelper extends HttpResponse
     }
 
     /**
-     * @param array $errors
-     * @param string|null $message
-     * @param int $statusCode
+     * @param  array  $errors
+     * @param  string|null  $message
+     * @param  int  $statusCode
      */
     public static function error($data, $message = null, $statusCode = 400)
     {
@@ -63,8 +63,8 @@ class ResponseHelper extends HttpResponse
     }
 
     /**
-     * @param string|null $message
-     * @param int $statusCode
+     * @param  string|null  $message
+     * @param  int  $statusCode
      */
     public static function notFound($message = null, $statusCode = 404)
     {
@@ -72,8 +72,8 @@ class ResponseHelper extends HttpResponse
     }
 
     /**
-     * @param string|null $message
-     * @param int $statusCode
+     * @param  string|null  $message
+     * @param  int  $statusCode
      */
     public static function unauthorized($message = null, $statusCode = 401)
     {
@@ -81,8 +81,8 @@ class ResponseHelper extends HttpResponse
     }
 
     /**
-     * @param string|null $message
-     * @param int $statusCode
+     * @param  string|null  $message
+     * @param  int  $statusCode
      */
     public static function forbidden($message = null, $statusCode = 403)
     {
@@ -90,8 +90,8 @@ class ResponseHelper extends HttpResponse
     }
 
     /**
-     * @param string|null $message
-     * @param int $statusCode
+     * @param  string|null  $message
+     * @param  int  $statusCode
      */
     public static function internalServerError($message = null, $statusCode = 500)
     {

@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * Class CategoryServices
- * @package App\ServiceApps\Category\Facades
+ *
  * @method static \App\ServiceApps\Category\Services\CategoryServices getAll(array $params = [])
  * @method static \App\ServiceApps\Category\Services\CategoryServices find($id, array $params = [])
  * @method static \App\ServiceApps\Category\Services\CategoryServices create(array $data = [])

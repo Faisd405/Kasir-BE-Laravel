@@ -2,12 +2,11 @@
 
 namespace App\ServiceApps\Supplier\Facades;
 
-use App\ServiceApps\Supplier\Contracts\SupplierServiceInterface;
 use Illuminate\Support\Facades\Facade;
 
 /**
  * Class SupplierServices
- * @package App\ServiceApps\Supplier\Facades
+ *
  * @method static \App\ServiceApps\Supplier\Services\SupplierServices getAll(array $params = [])
  * @method static \App\ServiceApps\Supplier\Services\SupplierServices find($id, array $params = [])
  * @method static \App\ServiceApps\Supplier\Services\SupplierServices create(array $data = [])

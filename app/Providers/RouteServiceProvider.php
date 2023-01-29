@@ -7,7 +7,6 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
-
 use Illuminate\Support\Str;
 
 class RouteServiceProvider extends ServiceProvider
@@ -57,27 +56,27 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * Define the "api" routes for the application.
      */
-    protected function mapApiRoutes(){
+    protected function mapApiRoutes()
+    {
         // Map all routes in app/ServiceApps/{ServiceName}/routes/api.php
         $path = base_path('app/ServiceApps');
 
         // Get all directories in app/ServiceApps
-        $directories = array_filter(glob($path . '/*'), 'is_dir');
+        $directories = array_filter(glob($path.'/*'), 'is_dir');
 
         // Loop through all directories
         foreach ($directories as $directory) {
             // Get the directory name
-            $directory = str_replace($path . '/', '', $directory);
+            $directory = str_replace($path.'/', '', $directory);
 
             // Get the route path
-            $routePath = base_path('app/ServiceApps/' . $directory . '/routes/api.php');
+            $routePath = base_path('app/ServiceApps/'.$directory.'/routes/api.php');
 
             // Check if the route path exists
             if (file_exists($routePath)) {
-
                 // Map the route
                 Route::middleware('api')
-                    ->prefix('api/' . Str::slug(strtolower($directory), '-'))
+                    ->prefix('api/'.Str::slug(strtolower($directory), '-'))
                     ->group($routePath);
             }
         }

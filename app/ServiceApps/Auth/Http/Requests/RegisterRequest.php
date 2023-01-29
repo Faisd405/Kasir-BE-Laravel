@@ -3,8 +3,6 @@
 namespace App\ServiceApps\Auth\Http\Requests;
 
 use App\BaseService\BaseRequest;
-use Illuminate\Validation\ValidationException;
-use App\Utils\ResponseHelper;
 
 class RegisterRequest extends BaseRequest
 {
@@ -28,7 +26,7 @@ class RegisterRequest extends BaseRequest
         return [
             'name' => ['required', 'max:255', 'unique:users'],
             'email' => ['required', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'max:255', 'unique:users', 'confirmed']
+            'password' => ['required', 'max:255', 'unique:users', 'confirmed'],
         ];
     }
 }
