@@ -2,51 +2,13 @@
 
 namespace App\ServiceApps\Category\Services;
 
+use App\BaseService\BaseService;
 use App\ServiceApps\Category\Repositories\CategoryRepository;
 
-class CategoryService
+class CategoryService extends BaseService
 {
-    protected $categoryRepository;
-
-    public function __construct(CategoryRepository $categoryRepository)
+    public function __construct(CategoryRepository $repository)
     {
-        $this->categoryRepository = $categoryRepository;
-    }
-
-    public function getAll($params, $withPaginate = true)
-    {
-        return $this->categoryRepository->getAll($params, $withPaginate);
-    }
-
-    public function find($id, $params = [])
-    {
-        return $this->categoryRepository->find($id, $params);
-    }
-
-    public function create($data)
-    {
-        return $this->categoryRepository->create($data);
-    }
-
-    public function update($id, $data)
-    {
-        $this->categoryRepository->update($id, $data);
-
-        return $this->categoryRepository->find($id);
-    }
-
-    public function delete($id)
-    {
-        return $this->categoryRepository->delete($id);
-    }
-
-    public function restore($id)
-    {
-        return $this->categoryRepository->restore($id);
-    }
-
-    public function forceDelete($id)
-    {
-        return $this->categoryRepository->forceDelete($id);
+        parent::__construct($repository);
     }
 }

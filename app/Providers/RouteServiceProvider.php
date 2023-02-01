@@ -37,7 +37,7 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
 
-            // $this->mapApiRoutes();
+            $this->mapModuleRoutes();
         });
     }
 
@@ -56,7 +56,7 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * Define the "api" routes for the application.
      */
-    protected function mapApiRoutes()
+    protected function mapModuleRoutes()
     {
         // Map all routes in app/ServiceApps/{ServiceName}/routes/api.php
         $path = base_path('app/ServiceApps');
@@ -70,14 +70,20 @@ class RouteServiceProvider extends ServiceProvider
             $directory = str_replace($path.'/', '', $directory);
 
             // Get the route path
-            $routePath = base_path('app/ServiceApps/'.$directory.'/routes/api.php');
+            $routeApiPath = base_path('app/ServiceApps/'.$directory.'/routes/api.php');
+            $routeWebPath = base_path('app/ServiceApps/'.$directory.'/routes/web.php');
 
             // Check if the route path exists
-            if (file_exists($routePath)) {
+            if (file_exists($routeApiPath)) {
                 // Map the route
                 Route::middleware('api')
-                    ->prefix('api/'.Str::slug(strtolower($directory), '-'))
-                    ->group($routePath);
+                    ->prefix('api')
+                    ->group($routeApiPath);
+            }
+            if (file_exists($routeWebPath)) {
+                // Map the route
+                Route::middleware('web')
+                    ->group($routeWebPath);
             }
         }
     }
