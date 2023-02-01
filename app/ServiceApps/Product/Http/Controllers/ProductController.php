@@ -2,85 +2,76 @@
 
 namespace App\ServiceApps\Product\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
+use App\BaseService\BaseController;
+use App\ServiceApps\Product\Facades\ProductService;
+use App\ServiceApps\Product\Http\Requests\ProductIndexRequest;
+use App\ServiceApps\Product\Http\Requests\ProductStoreRequest;
+use App\ServiceApps\Product\Http\Requests\ProductUpdateRequest;
+use App\ServiceApps\Product\Http\Resource\ProductCollection;
+use App\ServiceApps\Product\Http\Resource\ProductResource;
+use App\Utils\ResponseHelper;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 
-class ProductController extends Controller
+class ProductController extends BaseController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Renderable
-     */
-    public function index()
+    public function index(ProductIndexRequest $request)
     {
-        return view('product::index');
+        $data = ProductService::getAll($request->all());
+
+        return ResponseHelper::success(new ProductCollection($data), 'List Data Categories');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Renderable
-     */
-    public function create()
+    public function show($id, Request $request)
     {
-        return view('product::create');
+        $data = ProductService::find($id, $request->all());
+
+        if (! $data) {
+            return ResponseHelper::notFound('Data Not Found');
+        }
+
+        return ResponseHelper::success(new ProductResource($data), 'Berhasil Menampilkan Data');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  Request  $request
-     * @return Renderable
-     */
-    public function store(Request $request)
+    public function store(ProductStoreRequest $request)
     {
-        //
+        return ResponseHelper::success(new ProductResource(ProductService::create($request->all()), 'Berhasil Menambahkan Data'));
     }
 
-    /**
-     * Show the specified resource.
-     *
-     * @param  int  $id
-     * @return Renderable
-     */
-    public function show($id)
+    public function update($id, ProductUpdateRequest $request)
     {
-        return view('product::show');
+        $data = ProductService::update($id, $request->all());
+
+        if (! $data) {
+            return ResponseHelper::notFound('Data Not Found');
+        }
+
+        return ResponseHelper::success(new ProductResource($data), 'Berhasil Mengubah Data');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Renderable
-     */
-    public function edit($id)
-    {
-        return view('product::edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  Request  $request
-     * @param  int  $id
-     * @return Renderable
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Renderable
-     */
     public function destroy($id)
     {
-        //
+        return ResponseHelper::success(ProductService::delete($id), 'Delete Data Success');
+    }
+
+    public function restore($id)
+    {
+        $data = ProductService::restore($id);
+
+        if (! $data) {
+            return ResponseHelper::notFound('Data Not Found');
+        }
+
+        return ResponseHelper::success(new ProductResource($data), 'Restore Data Success');
+    }
+
+    public function forceDelete($id)
+    {
+        $data = ProductService::forceDelete($id);
+
+        if (! $data) {
+            return ResponseHelper::notFound('Data Not Found');
+        }
+
+        return ResponseHelper::success(new ProductResource($data), 'Force Delete Data Success');
     }
 }
