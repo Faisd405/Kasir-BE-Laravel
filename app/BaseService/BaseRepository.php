@@ -2,6 +2,7 @@
 
 namespace App\BaseService;
 
+use App\BaseService\Construct\BaseRepositoryInterface;
 use App\ServiceApps\Supplier\Entities\Supplier;
 use Illuminate\Database\Eloquent\Model;
 

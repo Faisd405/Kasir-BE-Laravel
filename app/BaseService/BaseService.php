@@ -3,6 +3,7 @@
 namespace App\BaseService;
 
 use App\BaseService\BaseRepository;
+use App\BaseService\Construct\BaseServiceInterface;
 
 class BaseService implements BaseServiceInterface
 {
