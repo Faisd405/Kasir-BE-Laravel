@@ -19,7 +19,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- *
  * @method static \Illuminate\Database\Eloquent\Builder|Product newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Product newQuery()
  * @method static \Illuminate\Database\Query\Builder|Product onlyTrashed()
@@ -36,8 +35,17 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereWebsite($value)
  * @method static \Illuminate\Database\Query\Builder|Product withTrashed()
  * @method static \Illuminate\Database\Query\Builder|Product withoutTrashed()
- *
  * @mixin \Eloquent
+ * @property int|null $supplier_id
+ * @property int|null $category_id
+ * @property int $quantity
+ * @property int $price
+ * @property string|null $image
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereCategoryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product wherePrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereQuantity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereSupplierId($value)
  */
 class Product extends Model
 {

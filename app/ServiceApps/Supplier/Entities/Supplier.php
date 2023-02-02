@@ -19,7 +19,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- *
  * @method static \Illuminate\Database\Eloquent\Builder|Supplier newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Supplier newQuery()
  * @method static \Illuminate\Database\Query\Builder|Supplier onlyTrashed()
@@ -36,7 +35,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Eloquent\Builder|Supplier whereWebsite($value)
  * @method static \Illuminate\Database\Query\Builder|Supplier withTrashed()
  * @method static \Illuminate\Database\Query\Builder|Supplier withoutTrashed()
- *
  * @mixin \Eloquent
  */
 class Supplier extends Model
