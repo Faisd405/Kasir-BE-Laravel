@@ -44,4 +44,9 @@ class Supplier extends Model
     use HasFactory, SoftDeletes;
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

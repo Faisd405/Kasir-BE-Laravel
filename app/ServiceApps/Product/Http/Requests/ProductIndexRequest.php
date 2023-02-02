@@ -26,10 +26,12 @@ class ProductIndexRequest extends BaseRequest
         return [
             'name' => 'sometimes|string|max:255',
             'description' => 'sometimes|string|max:255',
-            'address' => 'sometimes|string|max:255',
-            'phone' => 'sometimes|string|max:255',
-            'email' => 'sometimes|string|max:255',
-            'website' => 'sometimes|string|max:255',
+            'quantity' => 'sometimes|string|max:255',
+            'price' => 'sometimes|string|max:255',
+            'image' => 'sometimes|string|max:255',
+            'category_id' => 'sometimes|integer|max:255',
+            'supplier_id' => 'sometimes|integer|max:255',
+
             'search' => 'sometimes|string|max:255',
             'sort' => 'sometimes|string|max:255',
             'order' => 'sometimes|string|max:255',

@@ -26,10 +26,13 @@ class ProductStoreRequest extends BaseRequest
         return [
             'name' => 'required|string|max:255|unique:products,name',
             'description' => 'sometimes|string|max:255',
-            'address' => 'sometimes|string|max:255',
-            'phone' => 'sometimes|string|max:255',
-            'email' => 'sometimes|string|max:255',
-            'website' => 'sometimes|string|max:255',
+            'quantity' => 'sometimes|string|max:255',
+            'price' => 'sometimes|string|max:255',
+            'image' => 'sometimes|string|max:255',
+            'category_id' => 'sometimes|integer|max:255',
+            'supplier_id' => 'sometimes|integer|max:255',
+            'category' => 'sometimes|string|max:255',
+            'supplier' => 'sometimes|string|max:255',
         ];
     }
 }

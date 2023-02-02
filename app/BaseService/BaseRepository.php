@@ -15,6 +15,8 @@ class BaseRepository implements BaseRepositoryInterface
         $this->model = $model;
     }
 
+    // Start BaseCore CRUD
+
     /**
      * @param  array  $params
      * @param  bool  $withPaginate
@@ -116,4 +118,6 @@ class BaseRepository implements BaseRepositoryInterface
 
         return $model->forceDelete();
     }
+
+    // End BaseCore CRUD
 }

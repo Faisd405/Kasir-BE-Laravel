@@ -11,4 +11,19 @@ class CategoryRepository extends BaseRepository
     {
         parent::__construct($model);
     }
+
+    public function checkUpdateCategory($nameCategory)
+    {
+        $category = Category::withTrashed()->where('name', $nameCategory)->first();
+
+        if (empty($category)) {
+            $category = Category::create(['name' => $nameCategory]);
+        }
+
+        if ($category['deleted_at'] != null) {
+            $category->restore();
+        }
+
+        return $category['id'];
+    }
 }
