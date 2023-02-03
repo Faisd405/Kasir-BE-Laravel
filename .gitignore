@@ -16,6 +16,7 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+composer.lock
 
 # Laravel IDE Helper
 _ide_helper.php
